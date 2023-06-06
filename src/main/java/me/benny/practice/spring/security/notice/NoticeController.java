@@ -2,6 +2,9 @@ package me.benny.practice.spring.security.notice;
 
 import lombok.RequiredArgsConstructor;
 import me.benny.practice.spring.security.note.NoteRegisterDto;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +28,10 @@ public class NoticeController {
      */
     @GetMapping
     public String getNotice(Model model) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        authentication.getPrincipal();
+        authentication.getAuthorities();
         List<Notice> notices = noticeService.findAll();
         model.addAttribute("notices", notices);
         return "notice/index";
