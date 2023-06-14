@@ -11,10 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -40,7 +38,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         // authorization
         http.authorizeRequests()        // 인가 설정
                 .antMatchers("/", "/home", "/signup").permitAll()  // .antMatchers() : 경로 지정, permitAll() : 모든 인원에게 권한 허용
-                .antMatchers("/note").hasRole("USER")    
+                .antMatchers("/note").hasRole("USER")
                 .antMatchers("/admin").hasRole("ADMIN")     // admin 페이지는 ADMIN 롤을 가진 유저에게만 허용
                 .antMatchers(HttpMethod.POST, "/notice").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/notice").hasRole("ADMIN")
@@ -71,6 +69,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
      *
      * @return UserDetailsService
      */
+    // 아이디 비밀번호를 검사하기 위해서 User Entity에서 UserDetails를 implemnets를 받아
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
