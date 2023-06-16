@@ -69,7 +69,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
      *
      * @return UserDetailsService
      */
-    // 아이디 비밀번호를 검사하기 위해서 User Entity에서 UserDetails를 implemnets를 받아
+    // 아이디 비밀번호를 검사하기 위해서 User Entity에서 UserDetails를 implemnets를 받아 정해진 형식에 맞춰 구성함
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
