@@ -17,6 +17,7 @@ import java.util.Collections;
 @Table
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+// UserDetails Spring Security에서 검사하기 위해서 해당 클래스 받음
 public class User implements UserDetails {
 
     @GeneratedValue
