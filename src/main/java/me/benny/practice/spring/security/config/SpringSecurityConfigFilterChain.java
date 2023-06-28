@@ -19,6 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+// SpringSecurityConfig extends WebSecurityConfigurerAdapter 대신 사용함 기존 WebSecurityConfigurerAdapter은 사라지는 추세
 public class SpringSecurityConfigFilterChain {
     // FilterChain
     private final UserService userService;
